@@ -1,0 +1,13 @@
+// FIZZ BUZZ 
+
+for (var numero = 0; numero <= 100; numero++) {
+    if (numero % 3 == 0 && numero % 5 == 0) {
+        console.log(`${numero} FIZZ BUZZ`)
+    } else if (numero % 3 == 0) {
+        console.log(`${numero} FIZZ`)
+    } else if (numero % 5 == 0) {
+        console.log(`${numero} BUZZ`)
+    } else {
+        console.log(numero)
+    }
+}
