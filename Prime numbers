@@ -1,0 +1,20 @@
+contador = 0
+
+for (var numero = 1; numero <= 10; numero++){
+    
+    for (var i = 2; i <= numero; i++) {
+        if (numero % i == 0 ) {
+            contador++
+        }
+    }
+
+    if (contador == 1) {
+        console.log(`${numero} es primo`)
+    } else {
+        console.log(`${numero} no es primo`)
+    }
+
+    i = 2
+    contador = 0
+
+}
