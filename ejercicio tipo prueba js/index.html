@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio tipo pba js</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
+
+    <style>
+      input {
+        margin-top: 10px;
+      }
+
+      .input-group-text {
+        margin-top: 10px;
+      }
+
+      body {
+        background-color: black;
+      }
+
+    </style>
+
+</head>
+<body>
+  <div class="container-md mt-5">
+    <main>
+        <!--Accordion-->
+        <div class="row" >
+            <div class="col" >
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Registrar
+                        </button>
+                      </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <!--Contenido Registrar-->
+                            <form action="" class="">
+                                <input type="text" class="form-control" id="marca" placeholder="Marca" required>
+                
+                                <input type="text" class="form-control" id="modelo" placeholder="Modelo" required>
+                
+                                <div class="input-group">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                  </div>
+                                  <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" id="valor_base" placeholder="Valor Base">
+                                </div>
+                
+                                <input type="number" class="form-control" id="km" placeholder="Kilometros" min="0"  required>
+
+                                <input type="text" class="form-control" id="color" placeholder="Color"  >
+
+                                <input type="number" class="form-control" id="anio" placeholder="Año" />
+
+                                <input type="text" class="form-control" id="patente" placeholder="Patente">
+
+                                <br>
+
+                                <div class="form-check">
+                                    <input class="form-check-input vendido" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="true">
+                                    <label class="vendido" for="flexRadioDefault1">
+                                      Vendido
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input vendido" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="false" checked>
+                                    <label class="vendido" for="flexRadioDefault2">
+                                      En stock
+                                    </label>
+                                  </div>
+                                  
+                                  <hr>
+
+                                  <div class="form-check">
+                                    <input class="form-check-input estado" type="radio" name="flexRadioDefault2" id="flexRadioDefault3" value="Nuevo">
+                                    <label class="form-check-label" for="flexRadioDefault3">
+                                      Nuevo
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input estado" type="radio" name="flexRadioDefault2" id="flexRadioDefault4" value="Usado" checked>
+                                    <label class="form-check-label" for="flexRadioDefault4">
+                                      Usado
+                                    </label>
+                                  </div>
+                
+                                <input type="button" class="btn" value="Ingresar" onclick="addVehiculo()">
+                            </form>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          Buscar
+                        </button>
+                      </h2>
+                      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <!--Contenido Buscar-->
+                          <form action="">
+                            <input type="text" class="form-control" id="patenteBuscar" placeholder="Patente" >
+                            <input type="button" class="btn" value="Buscar" onclick="patenteBus()">
+                          </form>
+
+                          <!--Tabla para desplegar la informacion buscada-->
+
+                          <div class="container-xl mt-3">
+                            <div >
+                              <h3 id="tituloInformacion"></h3>
+                            </div>
+                            <div>
+                              <p id="marcaInfo"></p>
+                              <p id="modeloInfo"></p>
+                              <p id="valorBaseInfo"></p>
+                              <p id="valorFinalInfo"></p>
+                              <p id="kmInfo"></p>
+                              <p id="estadoInfo"></p>
+                              <p id="colorInfo"></p>
+                              <p id="anioInfo"></p>
+                              <p id="patenteInfo"></p>
+                              <p id="vendidoInfo"></p>
+                              <p id="titularInfo"></p>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                          Editar
+                        </button>
+                      </h2>
+                      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <!--Contenido Editar-->
+
+                          <input type="text" class="form-control" id="patenteBuscar2" placeholder="Patente" >
+
+                          <br>
+                          
+                          <form action="">
+
+                              <div class="form-check">
+                                <input class="form-check-input editar" type="radio" name="flexRadioDefault" id="flexRadioDefault5" value="true">
+                                <label class="vendido" for="flexRadioDefault5">
+                                  Vendido
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input editar" type="radio" name="flexRadioDefault" id="flexRadioDefault6" value="false" checked>
+                                <label class="vendido" for="flexRadioDefault6">
+                                  En stock
+                                </label>
+                              </div>
+
+                                <input type="button" class="btn" value="modificar" onclick="editar()">
+
+                              </form>
+                        </div>
+                      </div>
+                    </div>
+                    <!--Acordeon para Ingresar cliente-->
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                          Ingresar Cliente
+                        </button>
+                      </h2>
+                      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <!--Contenido Ingresar Cliente-->
+                            <form action="">
+      
+                              <input type="text" class="form-control" id="rut" placeholder="Rut" >
+                              <input type="text" class="form-control" id="nombre" placeholder="Nombre" >
+                              <input type="text" class="form-control" id="apellido" placeholder="Apellido" >
+                              <input type="number" class="form-control" id="edad" placeholder="Edad" min="0" max="120" >
+                          
+                              <input type="button" class="btn" value="Ingresar" onclick="ingresarCliente()">
+
+                            </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="col" style="width:320px; height:300px; overflow:auto;">
+              <table class="table table-bordered table-dark" cellspacing="0" cellpadding="1" border="1" width="300">
+                <thead>
+                  <tr>
+                    <th scope="col">Patente</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Modelo</th>
+                    <th scope="col">Dueño</th>
+                    <th scope="col">Rut</th>
+                  </tr>
+                </thead>
+                <tbody id="tableBody">
+                  <tr>
+                    <th scope="row">3551JR</th>
+                    <td>Skoda</td>
+                    <td>Fabia</td>
+                    <td>Juan Marin</td>
+                    <td>20.590.676-2</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
+
+        <div class="container-md mt-5">
+          <div class="row">
+            <div class="col" style="width:320px; overflow:auto;">
+              <table class="table table-bordered table-dark" cellspacing="0" cellpadding="1" border="1" width="300">
+                <thead>
+                  <tr>
+                    <th scope="col">Patente</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Modelo</th>
+                    <th scope="col">Valor Base</th>
+                    <th scope="col">Valor Final</th>
+                    <th scope="col">Km</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Color</th>
+                    <th scope="col">Año</th>
+                    <th scope="col">Vendido</th>
+                  </tr>
+                </thead>
+                <tbody id="tableBodyAuto">
+                  <tr>
+                    <th scope="row" class="tableBodyAuto" id="PatenteTablaBuscar"></th>
+                    <td class="tableBodyAuto" id="marcaTablaBuscar"></td>
+                    <td class="tableBodyAuto" id="modeloTablaBuscar"></td>
+                    <td class="tableBodyAuto" id="valorBaseTablaBuscar"></td>
+                    <td class="tableBodyAuto" id="valorFinalTablaBuscar"></td>
+                    <td class="tableBodyAuto" id="kmTablaBuscar"></td>
+                    <td class="tableBodyAuto" id="estadoTablaBuscar"></td>
+                    <td class="tableBodyAuto" id="colorTablaBuscar"></td>
+                    <td class="tableBodyAuto" id="anioTablaBuscar"></td>
+                    <td class="tableBodyAuto" id="vendidoTablaBuscar"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col">
+
+            </div>
+          </div>
+        </div>
+    </main>
+  </div>
+</body>
+</html>
